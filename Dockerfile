@@ -17,8 +17,9 @@ RUN mvn clean install -DskipTests
 # Import small size java image
 FROM openjdk:26-ea-slim
 # Copy build from stage 1 (builder)
-COPY --from=builder /app/target/*.jar /app/target/expenseapp.jar
+COPY --from=builder /app/target/*.jar /app/expenseapp.jar
 # Expose application port 
 EXPOSE 8080
 # Start the application
-CMD ["java","-jar","/app/target/expenseapp.jar"]
+CMD ["java","-jar","/app/expenseapp.jar"]
+#--------------------------------------
